@@ -32,36 +32,19 @@ RUN /tmp/abcddocker_installer.sh 251
 
 ## Configure basic freesurfer ENV
 #ENV OS Linux
-#ENV FS_OVERRIDE 0
-#ENV FIX_VERTEX_AREA= 
-#ENV SUBJECTS_DIR /output
-#ENV FSF_OUTPUT_FORMAT nii.gz
-#ENV MNI_DIR /opt/freesurfer/mni
-#ENV LOCAL_DIR /opt/freesurfer/local
-#ENV FREESURFER_HOME /opt/freesurfer
-#ENV FSFAST_HOME /opt/freesurfer/fsfast
-#ENV MINC_BIN_DIR /opt/freesurfer/mni/bin
-#ENV MINC_LIB_DIR /opt/freesurfer/mni/lib
-#ENV MNI_DATAPATH /opt/freesurfer/mni/data
-#ENV FMRI_ANALYSIS_DIR /opt/freesurfer/fsfast
-#ENV PERL5LIB /opt/freesurfer/mni/lib/perl5/5.8.5
-#ENV MNI_PERL5LIB /opt/freesurfer/mni/lib/perl5/5.8.5
-#ENV PATH /opt/freesurfer/bin:/opt/freesurfer/fsfast/bin:/opt/freesurfer/tktools:/opt/freesurfer/mni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 #
 ## Configure bashrc to source FreeSurferEnv.sh
 #RUN /bin/bash -c ' echo -e "source $FREESURFER_HOME/FreeSurferEnv.sh &>/dev/null" >> /root/.bashrc '
 
 
-#COPY ./gosu /usr/local/bin/
-#COPY ./mmps_engine /usr/pubsw/packages/MMPS/MMPS_251/bin
 #COPY ./*.sh /usr/pubsw/packages/MMPS/MMPS_251/sh/
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V251"
-ENV VER "251_20180827"
+ENV VER "251_20190710
 ENV USER "MMPS"
 ENV HOME "/home/MMPS"
 #############################################################################
-#The entrypoint_gosu.sh will creat an MMPS user with uid equals current user
+#The abcd_init.sh will creat an MMPS user with uid equals current user
 #So data should be mounted to /home/MMPS
 #############################################################################
 

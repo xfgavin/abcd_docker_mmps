@@ -126,6 +126,10 @@ mv bin/dcm2niix /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/dcm2niix_noflipY
 ln -s dcm2niix_noflipY /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/dcm2niix
 )
 
+aria2c -q -x 10 -s 10 -d /usr/local/bin -o gosu https://github.com/tianon/gosu/releases/download/1.11/gosu-amd64
+chmod +x /usr/local/bin/gosu
+
+
 ln -s /usr/lib/x86_64-linux-gnu/libtiff.so.5 /usr/lib/x86_64-linux-gnu/libtiff.so.3
 ln -s /usr/lib/libMagick.so /usr/lib/libMagick.so.6
 sed -e "s#^root.*#root:*:0:0:root:/root:/bin/tcsh#g" -i /etc/passwd
