@@ -21,12 +21,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ADD abcddocker_installer.sh /tmp
 
-RUN /tmp/abcddocker_installer.sh
-###########MCR
-#?g-rw-r--r-- 1 root root  723673080 Jun 26 07:11 MCR_R2014b_glnxa64_installer.zip
-#?g-rw-r--r-- 1 root root  814921298 Jun 26 07:12 MCR_R2015b_glnxa64_installer.zip
-#?g-rw-r--r-- 1 root root 1495757900 Jun 26 07:13 MCR_R2017b_glnxa64_installer.zip
-#?g-rw-r--r-- 1 root root 1882014063 Jun 26 07:10 MCR_R2018b_glnxa64_installer.zip
+RUN /tmp/abcddocker_installer.sh 251
 
 
     #&& find /usr/pubsw/packages/MMPS/ \( -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.m' -o -name '*.asv' -o -name '*.def' -o -name '*.vcproj' -o -name '*.old' -o -name '*.bak' -o -name '*.swp' -o -name '*.notes' -o -name '*.m~' -o -name CONTENTS -o -name 'README*' -o -name .xdebug_tkmedit -o -name '*.java' -o -name '*.cc' \) -delete \
@@ -70,5 +65,5 @@ ENV HOME "/home/MMPS"
 #So data should be mounted to /home/MMPS
 #############################################################################
 
-#ENTRYPOINT ["/usr/pubsw/packages/MMPS/MMPS_251/sh/entrypoint_gosu.sh"]
+#ENTRYPOINT ["/usr/pubsw/packages/MMPS/MMPS_251/sh/abcd_init.sh"]
 ENV DEBIAN_FRONTEND teletype
