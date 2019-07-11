@@ -40,7 +40,8 @@ RUN /tmp/abcddocker_installer.sh 251
 #COPY ./*.sh /usr/pubsw/packages/MMPS/MMPS_251/sh/
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V251"
-ENV VER "251_20190710
+ENV VER "251_20190710"
+ENV MMPSVER "251"
 ENV USER "MMPS"
 ENV HOME "/home/MMPS"
 #############################################################################

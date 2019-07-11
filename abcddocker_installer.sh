@@ -15,7 +15,7 @@ date
 echo "**********************************************"
 echo "*Installing prerequisites                    *"
 echo "**********************************************"
-apt-get -qq update >/dev/null
+apt-get -qq update >/dev/null 2>&1
 apt-get install -qq --no-install-recommends apt-utils >/dev/null
 apt-get -qq install tar aria2 libgomp1 perl-modules graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python3 python3-pip pigz >/dev/null
 pip3 -q  --no-cache-dir install pydicom dicom pandas matplotlib scipy
@@ -105,6 +105,16 @@ tar xf /tmp/mmps/mmps_$MMPSVER.tgz -C /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/
 
 aria2c -q -x 10 -s 10 -d /tmp -o mmps_perpheral_other.tgz https://github.com/xfgavin/abcd_docker/raw/master/packages/mmps_perpheral/mmps_perpheral_other.tgz
 tar xf /tmp/mmps_perpheral_other.tgz -C /usr/pubsw/packages/
+
+aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o abcd_init.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/abcd_init.sh
+aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o mmps_fsurf.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/mmps_fsurf.sh
+
+rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/run_all_MMPS.sh
+aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_all_MMPS.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/run_all_MMPS.sh
+rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/getValue.sh
+aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_all_MMPS.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/getValue.sh
+aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_mmps_engine.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/run_mmps_engine.sh
+chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/*.sh
 
 aria2c -q -x 10 -s 10 -d /tmp/ -o dtitk-2.3.1-Linux-x86_64.tar.gz https://github.com/xfgavin/abcd_docker/raw/master/packages/dtitk-2.3.1-Linux-x86_64.tar.gz
 tar xf /tmp/dtitk-2.3.1-Linux-x86_64.tar.gz -C /usr/pubsw/packages/dtitk
