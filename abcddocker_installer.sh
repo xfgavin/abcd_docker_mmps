@@ -112,7 +112,7 @@ aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o mmps_fsurf.s
 rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/run_all_MMPS.sh
 aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_all_MMPS.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/run_all_MMPS.sh
 rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/getValue.sh
-aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_all_MMPS.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/getValue.sh
+aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o getValue.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/getValue.sh
 aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_mmps_engine.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/run_mmps_engine.sh
 chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/*.sh
 
