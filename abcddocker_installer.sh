@@ -16,7 +16,7 @@ echo "**********************************************"
 echo "*Installing prerequisites                    *"
 echo "**********************************************"
 apt-get -qq update >/dev/null 2>&1
-apt-get install -qq --no-install-recommends apt-utils >/dev/null
+apt-get install -qq --no-install-recommends apt-utils >/dev/null 2>&1
 apt-get -qq install tar aria2 libgomp1 perl-modules graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python3 python3-pip pigz >/dev/null
 pip3 -q  --no-cache-dir install pydicom dicom pandas matplotlib scipy
 echo "deb http://archive.debian.org/debian-archive/debian jessie main contrib non-free" > /etc/apt/sources.list
@@ -116,7 +116,7 @@ aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o getValue.sh 
 aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_mmps_engine.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/run_mmps_engine.sh
 chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/*.sh
 
-aria2c -q -x 1 -s 1 -d /tmp -o mmps_setupscripts.tgz https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/mmps_setupscripts.tgz
+aria2c -q -x 1 -s 1 -d /tmp -o mmps_setupscripts.tgz https://raw.githubusercontent.com/xfgavin/abcd_docker/master/mmps/mmps_setupscripts.tgz
 tar xf /tmp/mmps_setupscripts.tgz -C /usr/pubsw
 chmod +x /usr/pubsw/bin/*
 
