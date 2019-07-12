@@ -12,6 +12,11 @@ padzero(){
   esac
 }
 date
+mkdir -p /scratch
+mkdir -p /data
+mkdir -p /oasis
+mkdir -p /projects
+
 echo "**********************************************"
 echo "*Installing prerequisites                    *"
 echo "**********************************************"
@@ -96,6 +101,7 @@ done
 cat /tmp/mmps_engine/mmps_engine.lrz* > /tmp/mmps_engine/mmps_engine.lrz
 lrzip -d -q -O /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/ /tmp/mmps_engine/mmps_engine.lrz
 chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine
+ln -s /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/
 for ((i=0;i<=1;i++))
 do
   aria2c -q -x 10 -s 10 -d /tmp/mmps -o mmps_$MMPSVER.tgz`padzero $i` https://github.com/xfgavin/abcd_docker/raw/master/mmps/mmps_$MMPSVER.tgz`padzero $i`

@@ -6,7 +6,7 @@
 
 USER_ID=${LOCAL_USER_ID:-1000}
 
-echo "Starting with UID : $USER_ID"
+#echo "Starting with UID : $USER_ID"
 useradd --shell /bin/tcsh -u $USER_ID -o -c "" -m MMPS >/dev/null 2>&1
 export HOME=/home/MMPS
 #possibly will need to link a cshrc in /home/MMPS
