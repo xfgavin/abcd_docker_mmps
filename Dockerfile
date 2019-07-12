@@ -5,13 +5,6 @@
 # Example build:
 #   docker build --no-cache -t abcd:251 .
 #
-# Example usage:
-#   docker run -ti \
-#       -v /input/directory:/input \
-#       -v `/output/directory:/output \
-#       abcd:251 \
-#       mri_convert -at /input/inputvolume.m3z /output/outvolume.mgz
-#
 
 # Start with debian
 FROM debian
@@ -30,13 +23,6 @@ RUN /tmp/abcddocker_installer.sh 251
 # Configure license 
 #COPY license /opt/freesurfer/.license
 
-## Configure basic freesurfer ENV
-#ENV OS Linux
-#
-## Configure bashrc to source FreeSurferEnv.sh
-#RUN /bin/bash -c ' echo -e "source $FREESURFER_HOME/FreeSurferEnv.sh &>/dev/null" >> /root/.bashrc '
-
-
 #COPY ./*.sh /usr/pubsw/packages/MMPS/MMPS_251/sh/
 
 ENV NAME "ABCD Processing Pipeline based on MMPS V251"
@@ -49,5 +35,5 @@ ENV HOME "/home/MMPS"
 #So data should be mounted to /home/MMPS
 #############################################################################
 
-#ENTRYPOINT ["/usr/pubsw/packages/MMPS/MMPS_251/sh/abcd_init.sh"]
+ENTRYPOINT ["/usr/pubsw/packages/MMPS/MMPS_251/sh/abcd_init.sh"]
 ENV DEBIAN_FRONTEND teletype
