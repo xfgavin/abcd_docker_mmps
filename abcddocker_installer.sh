@@ -101,7 +101,7 @@ done
 cat /tmp/mmps_engine/mmps_engine.lrz* > /tmp/mmps_engine/mmps_engine.lrz
 lrzip -d -q -O /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/ /tmp/mmps_engine/mmps_engine.lrz
 chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine
-ln -s /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/
+
 for ((i=0;i<=1;i++))
 do
   aria2c -q -x 10 -s 10 -d /tmp/mmps -o mmps_$MMPSVER.tgz`padzero $i` https://github.com/xfgavin/abcd_docker/raw/master/mmps/mmps_$MMPSVER.tgz`padzero $i`
@@ -121,6 +121,8 @@ rm -f /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/getValue.sh
 aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o getValue.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/getValue.sh
 aria2c -q -x 1 -s 1 -d /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh -o run_mmps_engine.sh https://raw.githubusercontent.com/xfgavin/abcd_docker/master/scripts/run_mmps_engine.sh
 chmod +x /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/*.sh
+
+ln -s /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/bin/mmps_engine /usr/pubsw/packages/MMPS/MMPS_$MMPSVER/sh/
 
 aria2c -q -x 1 -s 1 -d /tmp -o mmps_setupscripts.tgz https://raw.githubusercontent.com/xfgavin/abcd_docker/master/mmps/mmps_setupscripts.tgz
 tar xf /tmp/mmps_setupscripts.tgz -C /usr/pubsw
