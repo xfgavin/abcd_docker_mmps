@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Run multiple MMPS processing and analysis steps
 # The script waits for jobs to be finished.

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #####################################
 #MMPS freesurfer scripts parser
 #By Feng Xue (xfgavin at gmail.com)

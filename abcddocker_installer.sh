@@ -21,9 +21,9 @@ echo "**********************************************"
 echo "*Installing prerequisites                    *"
 echo "**********************************************"
 apt-get -qq update >/dev/null 2>&1
-apt-get install -qq --no-install-recommends apt-utils >/dev/null 2>&1
-apt-get -qq install tar aria2 libgomp1 perl-modules graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python3 python3-pip pigz >/dev/null
-pip3 -q  --no-cache-dir install pydicom dicom pandas matplotlib scipy
+apt-get install -qq --no-install-recommends --allow-unauthenticated apt-utils >/dev/null 2>&1
+apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 perl-modules graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python3 python3-pip pigz >/dev/null
+pip3 -q --no-cache-dir install pydicom dicom pandas matplotlib scipy
 echo "deb http://archive.debian.org/debian-archive/debian jessie main contrib non-free" > /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list
 echo "deb-src http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list
@@ -34,8 +34,8 @@ echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free
 echo "deb http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
 echo "deb-src http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
 apt-get -qq update >/dev/null
-apt-get -qq install libxp6 libxpm4 libpng12-0 >/dev/null
-apt-get -qq install git build-essential cmake pkg-config >/dev/null
+apt-get -qq --allow-unauthenticated install libxp6 libxpm4 libpng12-0 >/dev/null
+apt-get -qq install --allow-unauthenticated git build-essential cmake pkg-config >/dev/null
 aria2c -q -d /tmp -o libg2c0_3.4.6-8ubuntu2_amd64.deb http://old-releases.ubuntu.com/ubuntu/pool/universe/g/gcc-3.4/libg2c0_3.4.6-8ubuntu2_amd64.deb
 dpkg -x /tmp/libg2c0_3.4.6-8ubuntu2_amd64.deb /tmp/
 mv /tmp/usr/lib/libg2c* /usr/lib/
@@ -164,3 +164,5 @@ apt-get -qq autoremove >/dev/null
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 chmod -R 777 /tmp
+rm -f /bin/sh
+ln -s csh /bin/sh
