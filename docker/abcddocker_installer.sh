@@ -22,7 +22,7 @@ echo "*Installing prerequisites                    *"
 echo "**********************************************"
 apt-get -qq update >/dev/null 2>&1
 apt-get install -qq --no-install-recommends --allow-unauthenticated apt-utils >/dev/null 2>&1
-apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 perl-modules graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python3 python3-pip pigz >/dev/null
+apt-get -qq --allow-unauthenticated install tar aria2 libgomp1 graphicsmagick-libmagick-dev-compat libxt-dev libxrandr2 libxcursor-dev libxinerama-dev libxft-dev libxmu-dev libxi-dev libglu1-mesa bc bzip2 dc file libsm6 tcsh unzip libx11-6 libxext6 libgomp1 libexpat1 libgl1-mesa-glx libxt6 jq curl libstdc++6 binutils lrzip dcmtk python python3 python3-pip pigz >/dev/null
 pip3 -q --no-cache-dir install pydicom dicom pandas matplotlib scipy
 echo "deb http://archive.debian.org/debian-archive/debian jessie main contrib non-free" > /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian stretch main contrib non-free" >> /etc/apt/sources.list
@@ -33,6 +33,7 @@ echo "deb http://deb.debian.org/debian stretch-updates main contrib non-free" >>
 echo "deb-src http://deb.debian.org/debian stretch-updates main contrib non-free" >> /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
 echo "deb-src http://deb.debian.org/debian stretch-backports main contrib non-free" >> /etc/apt/sources.list
+echo "deb http://security.debian.org/debian-security jessie/updates main" >> /etc/apt/sources.list
 apt-get -qq update >/dev/null
 apt-get -qq --allow-unauthenticated install libxp6 libxpm4 libpng12-0 >/dev/null
 apt-get -qq install --allow-unauthenticated git build-essential cmake pkg-config >/dev/null
@@ -153,7 +154,7 @@ chmod +x /usr/local/bin/gosu
 
 
 ln -s /usr/lib/x86_64-linux-gnu/libtiff.so.5 /usr/lib/x86_64-linux-gnu/libtiff.so.3
-ln -s /usr/lib/libMagick.so /usr/lib/libMagick.so.6
+ln -s /usr/lib/libMagick.so /usr/lib/libMagick.so.6   ##For im_convert in MMPS
 sed -e "s#^root.*#root:*:0:0:root:/root:/bin/tcsh#g" -i /etc/passwd
 date
 echo "**********************************************"
@@ -161,9 +162,9 @@ echo "*Cleaning up                                 *"
 echo "**********************************************"
 apt-get -qq purge aria2 netbase manpages iputils-ping iproute2 gcc cpp cpp-6 gcc-6 git build-essential cmake pkg-config cmake-data tcpd>/dev/null
 apt-get -qq autoremove >/dev/null
+apt-get install -qq --allow-unauthenticated  --no-install-recommends --allow-downgrades perl-base=5.20.2-3+deb8u12 perl-modules perl=5.20.2-3+deb8u12 >/dev/null 2>&1
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 chmod -R 777 /tmp
 rm -f /bin/sh
-ln -s csh /bin/sh
-sed -e "s#\!/bin/sh#\!/usr/bin/env bash#g" -i /bin/zcat
+ln -s bash /bin/sh

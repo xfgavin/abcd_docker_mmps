@@ -27,7 +27,8 @@ else
       args="${args} \"${token}\"" 
       shift
   done
+  MATLAB_SHELL=/bin/tcsh
+  export MATLAB_SHELL;
   eval "\"${exe_dir}/mmps_engine\"" $args
 fi
 exit
-
