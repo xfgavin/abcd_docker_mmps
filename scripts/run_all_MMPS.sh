@@ -251,7 +251,7 @@ while [ 1 ]; do
               run_mmps_engine.sh $MCRROOT "$cmd"
               ;;
             mmps_fsurf.sh)
-              mmps_fsurf.sh "$cmd"
+              mmps_fsurf.sh $MCRROOT "$cmd"
               ;;
             *)
               eval $cmd

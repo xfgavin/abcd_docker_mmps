@@ -166,3 +166,4 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 chmod -R 777 /tmp
 rm -f /bin/sh
 ln -s csh /bin/sh
+sed -e "s#\!/bin/sh#\!/usr/bin/env bash#g" -i /bin/zcat

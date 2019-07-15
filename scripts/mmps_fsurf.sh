@@ -2,10 +2,11 @@
 #####################################
 #MMPS freesurfer scripts parser
 #By Feng Xue (xfgavin at gmail.com)
-# in UCSD 2018
+#in UCSD 2018
+#Modified on 07/14/2019 by Feng Xue
 #####################################
-MCRROOT=/usr/pubsw/packages/mcr/v81
-jobdir=$1
+MCRROOT=$1
+jobdir=$2
 [ ${#jobdir} -eq 0 ] && echo "Usage: `basename $0` jobdir" && exit 0
 [ ! -d ~/batchdirs/$jobdir ] && echo "jobdir $jobdir does not exist." && exit 0
 [ ! -f ~/batchdirs/$jobdir/scriptlist.txt ] && echo "Missing scriptlist.txt in jobdir $jobdir." && exit 0
@@ -23,6 +24,6 @@ do
   fi
   chmod +x ~/batchdirs/$jobdir/$job.csh
   echo "Running: ~/batchdirs/$jobdir/$job.csh"
-  #~/batchdirs/$jobdir/$job.csh
+  ~/batchdirs/$jobdir/$job.csh
   [ $hasmatlabjob -gt 0 ] && run_mmps_engine.sh $MCRROOT "$matlabcmd"
 done
