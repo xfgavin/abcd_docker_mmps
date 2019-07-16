@@ -7,7 +7,7 @@
 #
 
 # Start with debian
-FROM debian
+FROM debian:stretch-slim
 MAINTAINER Feng Xue <xfgavin@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
