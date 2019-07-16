@@ -58,11 +58,21 @@ mv /usr/pubsw/packages/freesurfer/freesurfer /usr/pubsw/packages/freesurfer/RH4-
 
 date
 echo "**********************************************"
-echo "*Installing FSL 5.0.6-centos6_64             *"
+echo "*Installing FSL  5.0.2.2-centos6_64          *"
 echo "**********************************************"
-aria2c -q -x 10 -s 10 -d /tmp -o fsl-5.0.6-centos6_64.tar.gz https://fsl.fmrib.ox.ac.uk/fsldownloads/oldversions/fsl-5.0.6-centos6_64.tar.gz
-tar -xf /tmp/fsl-5.0.6-centos6_64.tar.gz -C /usr/pubsw/packages/fsl/
-mv /usr/pubsw/packages/fsl/fsl /usr/pubsw/packages/fsl/fsl-5.0.6-centos6_64
+for ((i=0;i<=13;i++))
+do
+  aria2c -q -x 10 -s 10 -d /tmp/fsl -o fsl-5.0.2.2-centos6_64.tgz`padzero $i` https://github.com/xfgavin/abcd_docker/raw/master/packages/fsl-5.0.2.2-centos6_64.tgz`padzero $i`
+done
+cat /tmp/fsl/fsl-5.0.2.2-centos6_64.tgz* >/tmp/fsl/fsl-5.0.2.2-centos6_64.tgz
+tar xf /tmp/fsl/fsl-5.0.2.2-centos6_64.tgz -C /usr/pubsw/packages/fsl/
+#date
+#echo "**********************************************"
+#echo "*Installing FSL 5.0.6-centos6_64             *"
+#echo "**********************************************"
+#aria2c -q -x 10 -s 10 -d /tmp -o fsl-5.0.6-centos6_64.tar.gz https://fsl.fmrib.ox.ac.uk/fsldownloads/oldversions/fsl-5.0.6-centos6_64.tar.gz
+#tar -xf /tmp/fsl-5.0.6-centos6_64.tar.gz -C /usr/pubsw/packages/fsl/
+#mv /usr/pubsw/packages/fsl/fsl /usr/pubsw/packages/fsl/fsl-5.0.6-centos6_64
 
 date
 echo "**********************************************"
